@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CARDS } from "../../cards";
 import { EndGameDialogComponent } from '../endgamedialog/endgamedialog.component';
@@ -8,14 +8,15 @@ type Card = { image: string, isFlipped: boolean, isFound: boolean };
   selector: 'memo-game',
   templateUrl: './game.component.html',
   styles: [
-    'mat-grid-tile {background-color: blue;}',
-    '.card-image {width: 115px; height: auto;}',
+    'mat-grid-tile {background-color: #4797b1; border-radius: 10px;}',
+    '.card-image {align-self: stretch; height: auto;}',
     '.game-grid {width:70%; margin: 0 auto;}',
   ]
 })
 export class GameComponent implements OnInit {
   cards: Card[] = [];
-  gridWidth: number = 4;
+  @Input() nbOfCards: number;
+  @Input() maxFlipCount: number;
   flipCount: number = 0;
 
   constructor(public dialog: MatDialog) { }
@@ -24,10 +25,13 @@ export class GameComponent implements OnInit {
     this.resetGame();
   }
 
+  getGridWidth(): number {
+    return Math.sqrt(this.nbOfCards);
+  }
+
 
   resetGame = (): void => {
     this.cards = [];
-    this.gridWidth = 4;
     this.flipCount = 0;
 
     let imageIndexes: number[] = this.getRandomImagesIndexes();
@@ -40,8 +44,6 @@ export class GameComponent implements OnInit {
 
       }
     });
-
-    this.gridWidth = Math.sqrt(imageIndexes.length);
 
     this.cards = this.shuffleCards(cardList);
   }
@@ -56,6 +58,10 @@ export class GameComponent implements OnInit {
   }
 
   flipCard = (card: Card): void => {
+    if (this.maxFlipCount === this.flipCount) {
+      return;
+      // lost the game
+    }
     if (this.isTwoCardsFlipped()) {
       return;
     }
@@ -99,7 +105,7 @@ export class GameComponent implements OnInit {
     let imageIndexes: Set<number> = new Set();
     do {
       imageIndexes.add(this.getRandomNumber(1, 50));
-    } while (imageIndexes.size < 8);
+    } while (imageIndexes.size < this.nbOfCards / 2);
 
     const array = Array.from(imageIndexes);
 

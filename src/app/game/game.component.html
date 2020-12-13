@@ -1,8 +1,6 @@
-<h3>Nombre de coups: {{ flipCount }}</h3>
+<h3>Nombre de coups restants: {{ maxFlipCount - flipCount }}</h3>
 <div class="game-grid">
-  <!-- display when isGameStarted === true -->
-
-  <!-- <mat-grid-list [cols]="this.gridWidth" gutterSize="6">
+  <mat-grid-list [cols]="getGridWidth()" gutterSize="6">
     <mat-grid-tile *ngFor="let card of this.cards" (click)="flipCard(card)">
       <img
         class="card-image"
@@ -10,5 +8,5 @@
         [style.visibility]="!card.isFlipped ? 'hidden' : 'visible'"
       />
     </mat-grid-tile>
-  </mat-grid-list> -->
+  </mat-grid-list>
 </div>
