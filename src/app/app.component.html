@@ -1,58 +1,8 @@
 <div class="container">
   <div class="left-col">
-    <div class="options-panel" *ngIf="gameStatus == GameStatus.NotStarted">
-      <div>
-        <label>Mode de jeu</label>
-        <mat-button-toggle-group
-          [value]="gameMode"
-          (change)="updateGameModeValue($event)"
-        >
-          <mat-button-toggle value="1" checked>1 joueur</mat-button-toggle>
-          <mat-button-toggle value="2">2 joueurs</mat-button-toggle>
-        </mat-button-toggle-group>
-      </div>
-      <div>
-        <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nom du Joueur 1</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Sushi" />
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <mat-label>Nom du Joueur 2</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="hvcicv" />
-          </mat-form-field>
-        </form>
-      </div>
-      <div>
-        <label>Taille de la grille</label>
-        <mat-button-toggle-group
-          [value]="gridSize"
-          (change)="updateGridSizeValue($event)"
-        >
-          <mat-button-toggle value="4" checked>4</mat-button-toggle>
-          <mat-button-toggle value="16">16</mat-button-toggle>
-          <mat-button-toggle value="36">36</mat-button-toggle>
-        </mat-button-toggle-group>
-      </div>
-      <div>
-        <label>Nombre de coups maximal</label>
-        <mat-slider
-          [min]="sliderMin"
-          [max]="sliderMax"
-          step="1"
-          [value]="sliderValue"
-          thumbLabel
-          (change)="updateSliderValue($event)"
-        ></mat-slider>
-      </div>
-
-      <div>
-        <button mat-raised-button color="primary" (click)="startGame()">
-          Commencer
-        </button>
-      </div>
-    </div>
+    <memo-options-panel
+      *ngIf="gameStatus == GameStatus.NotStarted"
+    ></memo-options-panel>
 
     <div class="game-panel" *ngIf="gameStatus == GameStatus.Started">
       jhhjdsk

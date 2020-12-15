@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { CARDS } from "../../cards";
 import { EndGameDialogComponent } from '../endgamedialog/endgamedialog.component';
+import { FirebaseService } from '../firebase.service';
 
 type Card = { image: string, isFlipped: boolean, isFound: boolean };
 @Component({
@@ -18,8 +18,7 @@ export class GameComponent implements OnInit {
   @Input() nbOfCards: number;
   @Input() maxFlipCount: number;
   flipCount: number = 0;
-
-  constructor(public dialog: MatDialog) { }
+  constructor(public db: FirebaseService) { }
 
   ngOnInit(): void {
     this.resetGame();
@@ -49,12 +48,12 @@ export class GameComponent implements OnInit {
   }
 
   openEndGameDialog() {
-    const dialogRef = this.dialog.open(EndGameDialogComponent,
-      { data: { flipCount: this.flipCount } });
+    // const dialogRef = this.dialog.open(EndGameDialogComponent,
+    //   { data: { flipCount: this.flipCount } });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.resetGame();
-    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   this.resetGame();
+    // });
   }
 
   flipCard = (card: Card): void => {
@@ -75,6 +74,15 @@ export class GameComponent implements OnInit {
 
         if (this.isGameWon()) {
           //handle endgame
+          this.db.saveGame({
+            player: "oscar",
+            player2: null,
+            gridSize: 9,
+            gameMode: 1,
+            winner: 1,
+            flipCount: this.flipCount,
+            pairsFound: null,
+          });
           this.openEndGameDialog();
         }
       } else {

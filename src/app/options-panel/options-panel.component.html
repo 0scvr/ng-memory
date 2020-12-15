@@ -1,0 +1,157 @@
+<form #gameOptionsForm="ngForm" (ngSubmit)="startGame()" novalidate>
+  <!-- mode de jeu -->
+  <div class="field">
+    <label class="label">Mode de jeu</label>
+    <div class="control">
+      <div
+        class="select"
+        [class.is-danger]="
+          gameMode.invalid && (gameMode.dirty || gameMode.touched)
+        "
+      >
+        <select
+          name="gameMode"
+          [(ngModel)]="optionsForm.gameMode"
+          #gameMode="ngModel"
+          required
+        >
+          <option value="1">1 joueur</option>
+          <option value="2">2 joueurs</option>
+        </select>
+      </div>
+    </div>
+    <p
+      class="help is-danger"
+      *ngIf="gameMode.invalid && (gameMode.dirty || gameMode.touched)"
+    >
+      Vous devez choisir un mode jeu
+    </p>
+  </div>
+
+  <!-- nom du premier joueur -->
+  <div
+    class="field"
+    *ngIf="optionsForm.gameMode == 1 || optionsForm.gameMode == 2"
+  >
+    <label class="label">Nom du joueur 1</label>
+    <div class="control">
+      <input
+        [class.is-danger]="
+          player1.invalid && (player1.dirty || player1.touched)
+        "
+        class="input"
+        type="text"
+        name="player1"
+        placeholder="Joueur 1"
+        #player1="ngModel"
+        [(ngModel)]="optionsForm.player1"
+        required
+      />
+    </div>
+    <p
+      class="help is-danger"
+      *ngIf="player1.invalid && (player1.dirty || player1.touched)"
+    >
+      Veuillez entrer un nom pour le joueur 1
+    </p>
+  </div>
+
+  <!-- nom du deuxieme joueur -->
+  <div class="field" *ngIf="optionsForm.gameMode == 2">
+    <label class="label">Nom du joueur 2</label>
+    <div class="control">
+      <input
+        [class.is-danger]="
+          player2.invalid && (player2.dirty || player2.touched)
+        "
+        class="input"
+        type="text"
+        name="player2"
+        placeholder="Joueur 2"
+        #player2="ngModel"
+        [(ngModel)]="optionsForm.player2"
+        required
+      />
+    </div>
+    <p
+      class="help is-danger"
+      *ngIf="player2.invalid && (player2.dirty || player2.touched)"
+    >
+      Veuillez entrer un nom pour le joueur 2
+    </p>
+  </div>
+
+  <!-- taille de la grille -->
+  <div class="field">
+    <label class="label">Nombre de cartes</label>
+    <div class="control">
+      <div
+        class="select"
+        [class.is-danger]="
+          gridSize.invalid && (gridSize.dirty || gridSize.touched)
+        "
+      >
+        <select
+          name="gridSize"
+          [(ngModel)]="optionsForm.gridSize"
+          #gridSize="ngModel"
+          required
+        >
+          <option value="4">4</option>
+          <option value="16">16</option>
+          <option value="36">36</option>
+        </select>
+      </div>
+    </div>
+    <p
+      class="help is-danger"
+      *ngIf="gridSize.invalid && (gridSize.dirty || gridSize.touched)"
+    >
+      Vous devez choisir un nombre de cartes
+    </p>
+  </div>
+
+  <!-- nombre maximal de coups -->
+  <div class="field">
+    <label class="label">Nombre maximal de coups</label>
+    <div class="control">
+      <input
+        [class.is-danger]="
+          maxFlipCount.invalid && (maxFlipCount.dirty || maxFlipCount.touched)
+        "
+        class="input"
+        type="number"
+        name="maxFlipCount"
+        #maxFlipCount="ngModel"
+        [(ngModel)]="optionsForm.maxFlipCount"
+        required
+        min="{{ optionsForm.gridSize }}"
+      />
+    </div>
+    <p
+      class="help is-danger"
+      *ngIf="
+        maxFlipCount.invalid &&
+        (maxFlipCount.dirty || maxFlipCount.touched) &&
+        maxFlipCount.errors.required
+      "
+    >
+      Veuillez entrer un nombre maximal de coups
+    </p>
+    <p class="help is-danger" *ngIf="maxFlipCount.errors?.min">
+      Veuillez entrer un nombre supérieur ou égal à {{ optionsForm.gridSize }}
+    </p>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <button
+        class="button is-link"
+        type="submit"
+        [disabled]="!gameOptionsForm.form.valid"
+      >
+        Commencer
+      </button>
+    </div>
+  </div>
+</form>

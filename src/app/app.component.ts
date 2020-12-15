@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 enum GameStatus {
   NotStarted,
@@ -33,15 +32,23 @@ export class AppComponent implements OnInit {
   gameMode: number; // 1: solo; 2: multiplayer;
   player1: string;
   player2: string;
+  // myForm: FormGroup;
 
-  constructor(public firestore: AngularFirestore) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    // this.myForm = this.fb.group({
+    //   player1: '',
+    //   player2: ''
+    // });
+    // this.myForm.valueChanges.subscribe(console.log);
+
+    this.player1 = "";
+    this.player2 = "";
     this.gameStatus = GameStatus.NotStarted;
     this.gridSize = 4;
     this.gameMode = 1;
     this.updateSliderValues();
-    this.firestore.collection("games").add({ flipCount: 22 }).then(() => console.log("new game saved"));
   }
 
   getCurrentPlayer(): string {
