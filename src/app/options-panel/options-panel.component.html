@@ -125,7 +125,7 @@
         #maxFlipCount="ngModel"
         [(ngModel)]="optionsForm.maxFlipCount"
         required
-        min="{{ optionsForm.gridSize }}"
+        [memoMinFlipCount]="optionsForm.gridSize"
       />
     </div>
     <p
@@ -138,8 +138,16 @@
     >
       Veuillez entrer un nombre maximal de coups
     </p>
-    <p class="help is-danger" *ngIf="maxFlipCount.errors?.min">
-      Veuillez entrer un nombre supérieur ou égal à {{ optionsForm.gridSize }}
+    <p
+      class="help is-danger"
+      *ngIf="
+        maxFlipCount.invalid &&
+        (maxFlipCount.dirty || maxFlipCount.touched) &&
+        maxFlipCount.errors?.maxFlipCountInvalid
+      "
+    >
+      Veuillez entrer un nombre supérieur ou égal à
+      {{ optionsForm.gridSize || "4" }}
     </p>
   </div>
 

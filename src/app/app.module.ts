@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GameComponent } from './game/game.component';
 import { EndGameDialogComponent } from './endgamedialog/endgamedialog.component';
 import { OptionsPanelComponent } from './options-panel/options-panel.component';
+import { MinFlipCountDirective } from './min-flip-count.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { OptionsPanelComponent } from './options-panel/options-panel.component';
     GameComponent,
     EndGameDialogComponent,
     OptionsPanelComponent,
+    MinFlipCountDirective,
   ],
   imports: [
     FormsModule,
