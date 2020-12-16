@@ -1,13 +1,10 @@
-<h3>Nombre de coups restants: {{ maxFlipCount - flipCount }}</h3>
-<div class="game-grid">
-  <!-- <mat-grid-list [cols]="getGridWidth()" gutterSize="6">
-    <mat-grid-tile *ngFor="let card of this.cards" (click)="flipCard(card)">
-      <img
-        class="card-image"
-        [src]="card.image"
-        [style.visibility]="!card.isFlipped ? 'hidden' : 'visible'"
-      />
-    </mat-grid-tile>
-  </mat-grid-list>
-</div> -->
+<!-- mettre ça dans le panneu de gauche -->
+<!-- <h3>Nombre de coups restants: {{ maxFlipCount - flipCount }}</h3> -->
+<div>
+  <memo-card
+    *ngFor="let card of this.cards"
+    [imageSrc]="card.image"
+    [isFlipped]="card.isFlipped"
+    (click)="flipCard(card)"
+  ></memo-card>
 </div>

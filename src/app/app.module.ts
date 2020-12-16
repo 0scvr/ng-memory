@@ -12,6 +12,7 @@ import { GameComponent } from './game/game.component';
 import { EndGameDialogComponent } from './endgamedialog/endgamedialog.component';
 import { OptionsPanelComponent } from './options-panel/options-panel.component';
 import { MinFlipCountDirective } from './min-flip-count.directive';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MinFlipCountDirective } from './min-flip-count.directive';
     EndGameDialogComponent,
     OptionsPanelComponent,
     MinFlipCountDirective,
+    CardComponent,
   ],
   imports: [
     FormsModule,

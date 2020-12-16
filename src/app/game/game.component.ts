@@ -1,24 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CARDS } from "../../cards";
-import { EndGameDialogComponent } from '../endgamedialog/endgamedialog.component';
-import { FirebaseService } from '../firebase.service';
+import { Card } from '../Card';
 
-type Card = { image: string, isFlipped: boolean, isFound: boolean };
+
 @Component({
   selector: 'memo-game',
   templateUrl: './game.component.html',
   styles: [
-    'mat-grid-tile {background-color: #4797b1; border-radius: 10px;}',
-    '.card-image {align-self: stretch; height: auto;}',
-    '.game-grid {width:70%; margin: 0 auto;}',
   ]
 })
 export class GameComponent implements OnInit {
-  cards: Card[] = [];
+  @Input() gameMode: number;
   @Input() nbOfCards: number;
   @Input() maxFlipCount: number;
+  @Output() onGameEnd = new EventEmitter<any>();
   flipCount: number = 0;
-  constructor(public db: FirebaseService) { }
+  cards: Card[] = [];
+
+  constructor() { }
 
   ngOnInit(): void {
     this.resetGame();
@@ -27,7 +26,6 @@ export class GameComponent implements OnInit {
   getGridWidth(): number {
     return Math.sqrt(this.nbOfCards);
   }
-
 
   resetGame = (): void => {
     this.cards = [];
@@ -47,13 +45,14 @@ export class GameComponent implements OnInit {
     this.cards = this.shuffleCards(cardList);
   }
 
-  openEndGameDialog() {
-    // const dialogRef = this.dialog.open(EndGameDialogComponent,
-    //   { data: { flipCount: this.flipCount } });
+  finishGame(): void {
+    this.onGameEnd.emit({
+      flipCount: this.flipCount,
+      winner: 1, // only works for solo mode rn
+      // pairsFound
+    })
 
-    // dialogRef.afterClosed().subscribe(() => {
-    //   this.resetGame();
-    // });
+    // this.openEndGameDialog();
   }
 
   flipCard = (card: Card): void => {
@@ -73,17 +72,7 @@ export class GameComponent implements OnInit {
         this.setFoundCards()
 
         if (this.isGameWon()) {
-          //handle endgame
-          this.db.saveGame({
-            player: "oscar",
-            player2: null,
-            gridSize: 9,
-            gameMode: 1,
-            winner: 1,
-            flipCount: this.flipCount,
-            pairsFound: null,
-          });
-          this.openEndGameDialog();
+          this.finishGame();
         }
       } else {
         setTimeout(() => {

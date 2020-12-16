@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { GameOptions } from '../GameOptions';
 
 @Component({
   selector: 'memo-options-panel',
@@ -7,16 +8,19 @@ import { Component, OnInit } from '@angular/core';
     'form {display:flex; flex-direction:column;}'
   ]
 })
-export class OptionsPanelComponent implements OnInit {
-  optionsForm: any = {};
+export class OptionsPanelComponent {
+  optionsForm: GameOptions = {
+    gameMode: "1",
+    gridSize: "4",
+    maxFlipCount: 4,
+    player1: "",
+  };
+  @Output() optionsFormToParent = new EventEmitter<GameOptions>();
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  startGame(): void {
-    console.log(this.optionsForm);
+  submitForm(): void {
+    this.optionsFormToParent.emit(this.optionsForm);
   }
 
 }

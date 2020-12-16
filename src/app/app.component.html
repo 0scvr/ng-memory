@@ -1,19 +1,20 @@
-<div class="container">
-  <div class="left-col">
-    <memo-options-panel
-      *ngIf="gameStatus == GameStatus.NotStarted"
-    ></memo-options-panel>
-
-    <div class="game-panel" *ngIf="gameStatus == GameStatus.Started">
-      jhhjdsk
+<div class="container is-fullhd">
+  <div class="colums">
+    <div class="column" *ngIf="!hasGameStarted">
+      <memo-options-panel
+        (optionsFormToParent)="initGame($event)"
+      ></memo-options-panel>
     </div>
-  </div>
-  <div class="right-col">
-    <memo-game
-      *ngIf="gameStatus == GameStatus.Started"
-      [nbOfCards]="gridSize"
-      [maxFlipCount]="sliderValue"
-    ></memo-game>
-    <div *ngIf="gameStatus == GameStatus.NotStarted" class="gameGrid"></div>
+
+    <div class="column is-3" *ngIf="hasGameStarted">hello</div>
+
+    <div class="column is-9" *ngIf="hasGameStarted">
+      <memo-game
+        [nbOfCards]="gameOptions.gridSize"
+        [maxFlipCount]="gameOptions.maxFlipCount"
+        [gameMode]="gameOptions.gameMode"
+        (onGameEnd)="saveGame($event)"
+      ></memo-game>
+    </div>
   </div>
 </div>
