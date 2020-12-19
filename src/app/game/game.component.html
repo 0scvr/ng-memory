@@ -1,10 +1,471 @@
 <!-- mettre ça dans le panneu de gauche -->
 <!-- <h3>Nombre de coups restants: {{ maxFlipCount - flipCount }}</h3> -->
-<div>
-  <memo-card
-    *ngFor="let card of this.cards"
-    [imageSrc]="card.image"
-    [isFlipped]="card.isFlipped"
-    (click)="flipCard(card)"
-  ></memo-card>
+
+<!-- 6x6 grid -->
+<div class="tile is-ancestor" *ngIf="nbOfCards == 36">
+  <div class="tile is-2 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[0].image"
+        [isFlipped]="cards[0].isFlipped"
+        (click)="flipCard(cards[0])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[1].image"
+        [isFlipped]="cards[1].isFlipped"
+        (click)="flipCard(cards[1])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[2].image"
+        [isFlipped]="cards[2].isFlipped"
+        (click)="flipCard(cards[2])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[3].image"
+        [isFlipped]="cards[3].isFlipped"
+        (click)="flipCard(cards[3])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[4].image"
+        [isFlipped]="cards[4].isFlipped"
+        (click)="flipCard(cards[4])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[5].image"
+        [isFlipped]="cards[5].isFlipped"
+        (click)="flipCard(cards[5])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-2 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[6].image"
+        [isFlipped]="cards[6].isFlipped"
+        (click)="flipCard(cards[6])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[7].image"
+        [isFlipped]="cards[7].isFlipped"
+        (click)="flipCard(cards[7])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[8].image"
+        [isFlipped]="cards[8].isFlipped"
+        (click)="flipCard(cards[8])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[9].image"
+        [isFlipped]="cards[9].isFlipped"
+        (click)="flipCard(cards[9])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[10].image"
+        [isFlipped]="cards[10].isFlipped"
+        (click)="flipCard(cards[10])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[11].image"
+        [isFlipped]="cards[11].isFlipped"
+        (click)="flipCard(cards[11])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-2 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[12].image"
+        [isFlipped]="cards[12].isFlipped"
+        (click)="flipCard(cards[12])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[13].image"
+        [isFlipped]="cards[13].isFlipped"
+        (click)="flipCard(cards[13])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[14].image"
+        [isFlipped]="cards[14].isFlipped"
+        (click)="flipCard(cards[14])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[15].image"
+        [isFlipped]="cards[15].isFlipped"
+        (click)="flipCard(cards[15])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[16].image"
+        [isFlipped]="cards[16].isFlipped"
+        (click)="flipCard(cards[16])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[17].image"
+        [isFlipped]="cards[17].isFlipped"
+        (click)="flipCard(cards[17])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-2 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[18].image"
+        [isFlipped]="cards[18].isFlipped"
+        (click)="flipCard(cards[18])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[19].image"
+        [isFlipped]="cards[19].isFlipped"
+        (click)="flipCard(cards[19])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[20].image"
+        [isFlipped]="cards[20].isFlipped"
+        (click)="flipCard(cards[20])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[21].image"
+        [isFlipped]="cards[21].isFlipped"
+        (click)="flipCard(cards[21])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[22].image"
+        [isFlipped]="cards[22].isFlipped"
+        (click)="flipCard(cards[22])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[23].image"
+        [isFlipped]="cards[23].isFlipped"
+        (click)="flipCard(cards[23])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-2 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[24].image"
+        [isFlipped]="cards[24].isFlipped"
+        (click)="flipCard(cards[24])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[25].image"
+        [isFlipped]="cards[25].isFlipped"
+        (click)="flipCard(cards[25])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[26].image"
+        [isFlipped]="cards[26].isFlipped"
+        (click)="flipCard(cards[26])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[27].image"
+        [isFlipped]="cards[27].isFlipped"
+        (click)="flipCard(cards[27])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[28].image"
+        [isFlipped]="cards[28].isFlipped"
+        (click)="flipCard(cards[28])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[29].image"
+        [isFlipped]="cards[29].isFlipped"
+        (click)="flipCard(cards[29])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-2 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[30].image"
+        [isFlipped]="cards[30].isFlipped"
+        (click)="flipCard(cards[30])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[31].image"
+        [isFlipped]="cards[31].isFlipped"
+        (click)="flipCard(cards[31])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[32].image"
+        [isFlipped]="cards[32].isFlipped"
+        (click)="flipCard(cards[32])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[33].image"
+        [isFlipped]="cards[33].isFlipped"
+        (click)="flipCard(cards[33])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[34].image"
+        [isFlipped]="cards[34].isFlipped"
+        (click)="flipCard(cards[34])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[35].image"
+        [isFlipped]="cards[35].isFlipped"
+        (click)="flipCard(cards[35])"
+      ></memo-card>
+    </div>
+  </div>
+</div>
+
+<!-- 4x4 grid -->
+<div class="tile is-ancestor" *ngIf="nbOfCards == 16">
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[0].image"
+        [isFlipped]="cards[0].isFlipped"
+        (click)="flipCard(cards[0])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[1].image"
+        [isFlipped]="cards[1].isFlipped"
+        (click)="flipCard(cards[1])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[2].image"
+        [isFlipped]="cards[2].isFlipped"
+        (click)="flipCard(cards[2])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[3].image"
+        [isFlipped]="cards[3].isFlipped"
+        (click)="flipCard(cards[3])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[4].image"
+        [isFlipped]="cards[4].isFlipped"
+        (click)="flipCard(cards[4])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[5].image"
+        [isFlipped]="cards[5].isFlipped"
+        (click)="flipCard(cards[5])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[6].image"
+        [isFlipped]="cards[6].isFlipped"
+        (click)="flipCard(cards[6])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[7].image"
+        [isFlipped]="cards[7].isFlipped"
+        (click)="flipCard(cards[7])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[8].image"
+        [isFlipped]="cards[8].isFlipped"
+        (click)="flipCard(cards[8])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[9].image"
+        [isFlipped]="cards[9].isFlipped"
+        (click)="flipCard(cards[9])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[10].image"
+        [isFlipped]="cards[10].isFlipped"
+        (click)="flipCard(cards[10])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[11].image"
+        [isFlipped]="cards[11].isFlipped"
+        (click)="flipCard(cards[11])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[12].image"
+        [isFlipped]="cards[12].isFlipped"
+        (click)="flipCard(cards[12])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[13].image"
+        [isFlipped]="cards[13].isFlipped"
+        (click)="flipCard(cards[13])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[14].image"
+        [isFlipped]="cards[14].isFlipped"
+        (click)="flipCard(cards[14])"
+      ></memo-card>
+    </div>
+
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[15].image"
+        [isFlipped]="cards[15].isFlipped"
+        (click)="flipCard(cards[15])"
+      ></memo-card>
+    </div>
+  </div>
+</div>
+
+<!-- 2x2 grid -->
+<div class="tile is-ancestor" *ngIf="nbOfCards == 4">
+  <div class="tile is-6 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[0].image"
+        [isFlipped]="cards[0].isFlipped"
+        (click)="flipCard(cards[0])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[1].image"
+        [isFlipped]="cards[1].isFlipped"
+        (click)="flipCard(cards[1])"
+      ></memo-card>
+    </div>
+  </div>
+
+  <div class="tile is-6 is-vertical is-parent">
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[2].image"
+        [isFlipped]="cards[2].isFlipped"
+        (click)="flipCard(cards[2])"
+      ></memo-card>
+    </div>
+    <div class="tile is-child notification is-info">
+      <memo-card
+        [imageSrc]="cards[3].image"
+        [isFlipped]="cards[3].isFlipped"
+        (click)="flipCard(cards[3])"
+      ></memo-card>
+    </div>
+  </div>
 </div>

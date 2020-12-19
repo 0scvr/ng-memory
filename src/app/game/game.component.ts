@@ -45,24 +45,34 @@ export class GameComponent implements OnInit {
     this.cards = this.shuffleCards(cardList);
   }
 
-  finishGame(): void {
-    this.onGameEnd.emit({
-      flipCount: this.flipCount,
-      winner: 1, // only works for solo mode rn
-      // pairsFound
-    })
+  finishGame(isWon: boolean): void {
+    if (isWon) {
+      console.log("game won");
+      this.onGameEnd.emit({
+        flipCount: this.flipCount,
+        winner: 1, // only works for solo mode rn
+        // pairsFound only for 2 player mode
+      });
 
-    // this.openEndGameDialog();
+    } else {
+      console.log("game lost");
+      this.onGameEnd.emit({
+        flipCount: null,
+        winner: null, // only works for solo mode rn
+        pairsFound: null
+      });
+    }
   }
 
   flipCard = (card: Card): void => {
     if (this.maxFlipCount === this.flipCount) {
+      this.finishGame(false);
       return;
-      // lost the game
     }
     if (this.isTwoCardsFlipped()) {
       return;
     }
+
 
     card.isFlipped = true;
     this.flipCount += 1;
@@ -72,12 +82,11 @@ export class GameComponent implements OnInit {
         this.setFoundCards()
 
         if (this.isGameWon()) {
-          this.finishGame();
+          this.finishGame(true);
         }
       } else {
         setTimeout(() => {
           this.unflipCards();
-          console.log("cards unflipped");
         }, 600);
       }
     }

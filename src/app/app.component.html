@@ -6,9 +6,9 @@
       ></memo-options-panel>
     </div>
 
-    <div class="column is-3" *ngIf="hasGameStarted">hello</div>
+    <!-- <div class="column is-one-quarter" *ngIf="hasGameStarted">hello</div> -->
 
-    <div class="column is-9" *ngIf="hasGameStarted">
+    <div class="column is-8" *ngIf="hasGameStarted">
       <memo-game
         [nbOfCards]="gameOptions.gridSize"
         [maxFlipCount]="gameOptions.maxFlipCount"

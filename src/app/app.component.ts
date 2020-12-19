@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     this.db.saveGame({
       ...gameData,
       player: this.gameOptions.player1,
-      player2: this.gameOptions.player2 || null,
+      player2: (this.gameOptions.gameMode == "2" ? this.gameOptions.player2 : null),
       gridSize: this.gameOptions.gridSize,
       gameMode: this.gameOptions.gameMode,
     });

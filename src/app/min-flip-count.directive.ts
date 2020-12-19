@@ -6,7 +6,7 @@ import { Validator, AbstractControl, NG_VALIDATORS, ValidationErrors } from '@an
   selector: '[memoMinFlipCount]',
   providers: [{
     provide: NG_VALIDATORS,
-    useExisting: MinFlipCountDirective,
+    useExisting: MinFlipCountDirective, 
     multi: true
   }]
 })

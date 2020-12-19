@@ -9,7 +9,6 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GameComponent } from './game/game.component';
-import { EndGameDialogComponent } from './endgamedialog/endgamedialog.component';
 import { OptionsPanelComponent } from './options-panel/options-panel.component';
 import { MinFlipCountDirective } from './min-flip-count.directive';
 import { CardComponent } from './card/card.component';
@@ -18,7 +17,6 @@ import { CardComponent } from './card/card.component';
   declarations: [
     AppComponent,
     GameComponent,
-    EndGameDialogComponent,
     OptionsPanelComponent,
     MinFlipCountDirective,
     CardComponent,
