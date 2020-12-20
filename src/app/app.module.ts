@@ -12,6 +12,8 @@ import { GameComponent } from './game/game.component';
 import { OptionsPanelComponent } from './options-panel/options-panel.component';
 import { MinFlipCountDirective } from './min-flip-count.directive';
 import { CardComponent } from './card/card.component';
+import { HistoryTableComponent } from './history-table/history-table.component';
+import { EndModalComponent } from './end-modal/end-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { CardComponent } from './card/card.component';
     OptionsPanelComponent,
     MinFlipCountDirective,
     CardComponent,
+    HistoryTableComponent,
+    EndModalComponent,
   ],
   imports: [
     FormsModule,

@@ -1,3 +1,13 @@
+<memo-end-modal
+  (onEndBtnClick)="handleDialogClose($event)"
+  [flipCount]="gameDetails.flipCount"
+  [pairsFound]="gameDetails.pairsFound"
+  [gameMode]="gameOptions.gameMode"
+  [isWon]="gameDetails.isWon"
+  [winner]="gameDetails.winner"
+  *ngIf="hasGameEnded"
+></memo-end-modal>
+
 <div class="container is-fullhd">
   <div class="colums">
     <div class="column" *ngIf="!hasGameStarted">
@@ -6,14 +16,16 @@
       ></memo-options-panel>
     </div>
 
-    <!-- <div class="column is-one-quarter" *ngIf="hasGameStarted">hello</div> -->
+    <div class="column" *ngIf="hasGameStarted">
+      <memo-history-table></memo-history-table>
+    </div>
 
     <div class="column is-8" *ngIf="hasGameStarted">
       <memo-game
         [nbOfCards]="gameOptions.gridSize"
         [maxFlipCount]="gameOptions.maxFlipCount"
         [gameMode]="gameOptions.gameMode"
-        (onGameEnd)="saveGame($event)"
+        (onGameEnd)="handleEndGame($event)"
       ></memo-game>
     </div>
   </div>

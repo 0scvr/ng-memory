@@ -15,7 +15,7 @@ export class FirebaseService {
   }
 
   getHistory() {
-    return this.gamesRef.get();
+    return this.gamesRef.valueChanges();
   }
 
   saveGame(game): void {

@@ -1,0 +1,26 @@
+<table class="table is-striped">
+  <thead>
+    <tr>
+      <th>Mode</th>
+      <th>Joueur 1</th>
+      <th>Joueur 2</th>
+      <th>Gagnant</th>
+      <th>Taille grille</th>
+      <th>Coups</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of pastGames$ | async">
+      <td>{{ displayGameMode(game.gameMode) }}</td>
+      <td>{{ game.player || "-" }}</td>
+      <td>{{ game.player2 || "-" }}</td>
+      <td>{{ displayWinner(game) }}</td>
+      <td>{{ game.gridSize || "-" }}</td>
+      <td>{{ game.flipCount || "-" }}</td>
+      <td>
+        {{ game.createdAt.toMillis() | date: "dd/MM/yyyy H:mm" }}
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -11,18 +11,45 @@ import { FirebaseService } from './firebase.service';
 
 export class AppComponent implements OnInit {
   gameOptions: GameOptions;
+  gameDetails: any;
   hasGameStarted: boolean;
+  hasGameEnded: boolean;
 
   constructor(private db: FirebaseService) { }
 
   ngOnInit(): void {
     this.hasGameStarted = false;
+    this.hasGameEnded = false;
+    this.gameDetails = {};
   }
 
   initGame(gameOptions: GameOptions): void {
     console.log(gameOptions);
     this.gameOptions = gameOptions;
     this.hasGameStarted = true;
+  }
+
+  handleDialogClose(action: string) {
+    if (action === "playAgain") {
+      console.log("play again");
+
+    } else {
+      console.log("quit");
+
+    }
+  }
+
+  handleEndGame(gameData: any) {
+    this.hasGameEnded = true;
+    this.saveGame(gameData);
+
+    this.gameDetails = {
+      flipCount: gameData.flipCount || null,
+      pairsFound: gameData.pairsFound || null,
+      gameMode: this.gameOptions.gameMode,
+      isWon: gameData.winner == 1 && this.gameOptions.gameMode == '1',
+      winner: this.gameOptions.gameMode == '2' && (gameData.winner == 1 ? this.gameOptions.player1 : this.gameOptions.player2) || null
+    };
   }
 
   saveGame(gameData: any): void {

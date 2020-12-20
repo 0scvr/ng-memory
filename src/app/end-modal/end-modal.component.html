@@ -1,0 +1,32 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title">Partie terminéé!</h1>
+
+      <!-- 2 player -->
+      <h2 class="subtitle" *ngIf="gameMode == '2'">
+        {{ winner }} as gagné avec {{ pairsFound }} pairs.
+      </h2>
+
+      <!-- 1 player won -->
+      <h2 class="subtitle" *ngIf="gameMode == '1' && isWon">
+        Tu as gagné en {{ flipCount }} coups.
+      </h2>
+
+      <!-- 1 player lost -->
+      <h2 class="subtitle" *ngIf="gameMode == '1' && !isWon">Tu as perdu.</h2>
+
+      <div class="field is-grouped">
+        <p class="control">
+          <button class="button is-success" (click)="playAgain()">
+            Rejouer
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-danger" (click)="quit()">Quitter</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
