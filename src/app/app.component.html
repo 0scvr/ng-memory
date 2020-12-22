@@ -9,18 +9,30 @@
 ></memo-end-modal>
 
 <div class="container is-fullhd">
-  <div class="colums">
+  <h1 class="title has-text-centered">Jeu de mémoire</h1>
+  <div class="columns">
     <div class="column" *ngIf="!hasGameStarted">
+      <h1 class="subtitle">Options de jeu</h1>
       <memo-options-panel
         (optionsFormToParent)="initGame($event)"
       ></memo-options-panel>
     </div>
 
-    <div class="column" *ngIf="hasGameStarted">
+    <div class="column" *ngIf="!hasGameStarted">
+      <h1 class="subtitle">Historique de jeu</h1>
       <memo-history-table></memo-history-table>
     </div>
 
-    <div class="column is-8" *ngIf="hasGameStarted">
+    <div class="column is-3" *ngIf="hasGameStarted">
+      <memo-game-panel
+        [player1]="gameOptions.player1"
+        [player2]="gameOptions.player2"
+        [gameMode]="gameOptions.gameMode"
+        [maxFlipCount]="gameOptions.maxFlipCount"
+      ></memo-game-panel>
+    </div>
+
+    <div class="column is-9" *ngIf="hasGameStarted">
       <memo-game
         [nbOfCards]="gameOptions.gridSize"
         [maxFlipCount]="gameOptions.maxFlipCount"

@@ -1,0 +1,8 @@
+<div>
+  <label class="label">Mode de jeu: {{ displayGameMode(gameMode) }}</label>
+  <label class="label">Joueur 1: {{ player1 }}</label>
+  <label class="label" *ngIf="gameMode == '2'">Joueur 2: {{ player2 }}</label>
+  <label class="label"
+    >Nombre de coups restants: {{ maxFlipCount - flipCount }}</label
+  >
+</div>

@@ -7,6 +7,7 @@ import { Card } from '../Card';
   selector: 'memo-game',
   templateUrl: './game.component.html',
   styles: [
+    '.tile.is-vertical {max-width: 200px;}'
   ]
 })
 export class GameComponent implements OnInit {
