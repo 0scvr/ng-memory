@@ -29,6 +29,7 @@
         [player2]="gameOptions.player2"
         [gameMode]="gameOptions.gameMode"
         [maxFlipCount]="gameOptions.maxFlipCount"
+        [flipCount]="currentFlipCount"
       ></memo-game-panel>
     </div>
 
@@ -38,6 +39,7 @@
         [maxFlipCount]="gameOptions.maxFlipCount"
         [gameMode]="gameOptions.gameMode"
         (onGameEnd)="handleEndGame($event)"
+        (onFlipCountChange)="updateFlipCount($event)"
       ></memo-game>
     </div>
   </div>

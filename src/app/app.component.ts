@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   gameDetails: any;
   hasGameStarted: boolean;
   hasGameEnded: boolean;
+  currentFlipCount: number;
 
   constructor(private db: FirebaseService) { }
 
@@ -60,5 +61,9 @@ export class AppComponent implements OnInit {
       gridSize: this.gameOptions.gridSize,
       gameMode: this.gameOptions.gameMode,
     });
+  }
+
+  updateFlipCount(count: number) {
+    this.currentFlipCount = count;
   }
 }

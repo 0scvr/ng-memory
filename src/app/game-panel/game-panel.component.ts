@@ -18,8 +18,8 @@ export class GamePanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  displayGameMode(mode: number) {
-    if (mode == 1) {
+  displayGameMode(mode: string) {
+    if (mode == "1") {
       return "1 joueur";
     } else {
       return "2 joueurs";

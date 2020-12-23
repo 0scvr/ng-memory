@@ -15,6 +15,7 @@ export class GameComponent implements OnInit {
   @Input() nbOfCards: number;
   @Input() maxFlipCount: number;
   @Output() onGameEnd = new EventEmitter<any>();
+  @Output() onFlipCountChange = new EventEmitter<number>();
   flipCount: number = 0;
   cards: Card[] = [];
 
@@ -31,6 +32,8 @@ export class GameComponent implements OnInit {
   resetGame = (): void => {
     this.cards = [];
     this.flipCount = 0;
+
+    this.onFlipCountChange.emit(this.flipCount);
 
     let imageIndexes: number[] = this.getRandomImagesIndexes();
 
@@ -77,6 +80,7 @@ export class GameComponent implements OnInit {
 
     card.isFlipped = true;
     this.flipCount += 1;
+    this.onFlipCountChange.emit(this.flipCount);
 
     if (this.isTwoCardsFlipped()) {
       if (this.checkFlippedCards()) {
